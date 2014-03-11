@@ -1,4 +1,12 @@
 eclipse.preferences.version=1
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.142178775/CPATH/delimiter=;
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.142178775/CPATH/operation=remove
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.142178775/CPLUS_INCLUDE_PATH/delimiter=;
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.142178775/CPLUS_INCLUDE_PATH/operation=remove
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.142178775/C_INCLUDE_PATH/delimiter=;
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.142178775/C_INCLUDE_PATH/operation=remove
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.142178775/append=true
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.142178775/appendContributed=true
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.651573914/CPATH/delimiter=;
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.651573914/CPATH/operation=remove
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.651573914/CPLUS_INCLUDE_PATH/delimiter=;
@@ -7,6 +15,10 @@ environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.651573914/C_INCLUDE_PATH/operation=remove
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.651573914/append=true
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.cygwin.exe.debug.651573914/appendContributed=true
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.cygwin.exe.debug.142178775/LIBRARY_PATH/delimiter=;
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.cygwin.exe.debug.142178775/LIBRARY_PATH/operation=remove
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.cygwin.exe.debug.142178775/append=true
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.cygwin.exe.debug.142178775/appendContributed=true
 environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.cygwin.exe.debug.651573914/LIBRARY_PATH/delimiter=;
 environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.cygwin.exe.debug.651573914/LIBRARY_PATH/operation=remove
 environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.cygwin.exe.debug.651573914/append=true

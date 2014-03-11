@@ -25,6 +25,5 @@ C_UPPER_DEPS :=
 SUBDIRS := \
 src/view \
 src/model \
-src \
 src/controller \
 

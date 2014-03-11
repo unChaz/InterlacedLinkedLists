@@ -11,7 +11,6 @@ RM := rm -rf
 -include src/view/subdir.mk
 -include src/model/subdir.mk
 -include src/controller/subdir.mk
--include src/subdir.mk
 -include subdir.mk
 -include objects.mk
 

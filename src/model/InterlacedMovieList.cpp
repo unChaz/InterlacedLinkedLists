@@ -37,14 +37,14 @@ InterlacedMovieList::~InterlacedMovieList() {
  * postcondition: movie is added to the list.
  */
 void model::InterlacedMovieList::insertMovie(MovieNode* movie) {
-	if (size == 0) {
+	if (this->size == 0) {
 		this->pHeadTitle = movie;
 		this->pHeadRating = movie;
 		this->pHeadLength = movie;
 	} else {
-		addToList(movie, pHeadTitle, BY_TITLE, this->size);
-		addToList(movie, pHeadRating, BY_RATING, this->size);
-		addToList(movie, pHeadLength, BY_LENGTH, this->size);
+		this->addToList(movie, this->pHeadTitle, BY_TITLE, this->size);
+		this->addToList(movie, this->pHeadRating, BY_RATING, this->size);
+		this->addToList(movie, this->pHeadLength, BY_LENGTH, this->size);
 	}
 	this->size++;
 }
@@ -80,11 +80,11 @@ void model::InterlacedMovieList::deleteAllMovieNodes() {
 void model::InterlacedMovieList::addToList(MovieNode* movie, MovieNode* head, const string& method, int size) {
 	if (size == 1) {
 		int result = compareMovies(head, movie, method);
-		if (result > 0) {
+		if (result > 0 && this->size == 1) {
 			replaceHead(head, movie, method);
 			return;
 		} else {
-			insertHere(head, movie, 0, method);
+			insertAfter(head, movie, method);
 			return;
 		}
 	} else {
@@ -93,21 +93,19 @@ void model::InterlacedMovieList::addToList(MovieNode* movie, MovieNode* head, co
 			next = head->getNextTitle();
 		} else if (method.compare(BY_LENGTH) == 0) {
 			next = head->getNextLength();
-		} else if (method.compare(BY_RATING) == 0) {
+		} else {
 			next = head->getNextRating();
-		}
-
-		if (next == 0) {
-			cout << "THIS SHOULD NEVER HAPPEN!!!!! I DON'T UNDERSTAND. IF SIZE == 2, NEXT SHOULD NOT BE NULL"<< endl;
-			insertHere(head, movie, 0, method);
-			return;
 		}
 
 		int comparedToHead = compareMovies(movie, head, method);
 		int comparedToNext = compareMovies(movie, next, method);
 
-		if (comparedToHead == 0 || (comparedToHead == 1 && comparedToNext == -1)) {
-			insertHere(head, movie, next, method);
+		if (size == this->size && comparedToHead == -1) {
+			insertAfter(head, movie, method);
+		}
+
+		if (isEqualTo(comparedToHead) || (isSmallerThan(comparedToHead) && isBiggerThan(comparedToNext))) {
+			insertAfter(head, movie, method);
 			return;
 		} else {
 			addToList(movie, next, method, (size - 1));
@@ -116,30 +114,43 @@ void model::InterlacedMovieList::addToList(MovieNode* movie, MovieNode* head, co
 	}
 }
 
-void model::InterlacedMovieList::insertHere(MovieNode* last, MovieNode* current,
-		MovieNode* next, const string& method) {
-	if (next != NULL) {
-		if (method.compare(BY_TITLE) == 0) {
-			current->setNextTitle(next);
-			next->setPrevTitle(current);
-		} else if (method.compare(BY_LENGTH) == 0) {
-			current->setNextLength(next);
-			next->setPrevLength(current);
-		} else if (method.compare(BY_RATING) == 0) {
-			current->setNextRating(next);
-			next->setPrevRating(current);
-		}
-	}
+bool model::InterlacedMovieList::isBiggerThan(int value) {
+	return value == 1;
+}
 
+bool model::InterlacedMovieList::isEqualTo(int value) {
+	return value == 0;
+}
+
+bool model::InterlacedMovieList::isSmallerThan(int value) {
+	return value == -1;
+}
+
+void model::InterlacedMovieList::insertAfter(MovieNode* existingNode, MovieNode* newNode, const string& method) {
 	if (method.compare(BY_TITLE) == 0) {
-		last->setNextTitle(current);
-		current->setPrevTitle(last);
+		MovieNode* nextNode = existingNode->getNextTitle();
+		existingNode->setNextTitle(newNode);
+		newNode->setPrevTitle(existingNode);
+		if (nextNode != 0) {
+			nextNode->setPrevTitle(newNode);
+			newNode->setNextTitle(nextNode);
+		}
 	} else if (method.compare(BY_LENGTH) == 0) {
-		last->setNextLength(current);
-		current->setPrevLength(last);
-	} else if (method.compare(BY_RATING) == 0) {
-		last->setNextRating(current);
-		current->setPrevRating(last);
+		MovieNode* nextNode = existingNode->getNextLength();
+		existingNode->setNextLength(newNode);
+		newNode->setPrevLength(existingNode);
+		if (nextNode != 0) {
+			nextNode->setPrevLength(newNode);
+			newNode->setNextLength(nextNode);
+		}
+	} else {
+		MovieNode* nextNode = existingNode->getNextRating();
+		existingNode->setNextRating(newNode);
+		newNode->setPrevRating(existingNode);
+		if (nextNode != 0) {
+			nextNode->setPrevRating(newNode);
+			newNode->setNextRating(nextNode);
+		}
 	}
 }
 
@@ -171,7 +182,7 @@ int model::InterlacedMovieList::compareMovies(MovieNode* movie1,
 		return compareTitle(*movie1, *movie2);
 	} else if (method.compare(BY_LENGTH) == 0) {
 		return compareLength(*movie1, *movie2);
-	} else if (method.compare(BY_RATING) == 0) {
+	} else {
 		return compareRating(*movie1, *movie2);
 	}
 	return 2;

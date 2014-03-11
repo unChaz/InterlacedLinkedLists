@@ -8,9 +8,16 @@
 #ifndef MOVIENODE_H_
 #define MOVIENODE_H_
 
+#include <iostream>
+#include <algorithm>
 #include <string>
+#include <sstream>
+
+#include "stdlib.h"
+#include "header.h"
 
 using namespace std;
+
 /*
  * Contains meta data about a movie.
  *
@@ -41,6 +48,7 @@ public:
 	}
 
 	void setNextLength(MovieNode* nextLength) {
+		cout << this->getTitle() << " Next Length -> " << nextLength->getTitle() << endl;
 		pNextLength = nextLength;
 	}
 
@@ -49,6 +57,7 @@ public:
 	}
 
 	void setNextRating(MovieNode* nextRating) {
+		cout << this->getTitle() << " Next Rating -> " << nextRating->getTitle() << endl;
 		pNextRating = nextRating;
 	}
 
@@ -57,6 +66,7 @@ public:
 	}
 
 	void setNextTitle(MovieNode* nextTitle) {
+		cout << this->getTitle() << " Next Title -> " << nextTitle->getTitle() << endl;
 		pNextTitle = nextTitle;
 	}
 

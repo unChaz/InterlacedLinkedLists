@@ -35,8 +35,13 @@ private:
 	int compareLength(MovieNode movie1, MovieNode movie2);
 	int compareRating(MovieNode movie1, MovieNode movie2);
 	int getMovieRatingValue(MovieNode movie);
-	void insertHere(MovieNode* last, MovieNode* current, MovieNode* next, const string& method);
+	void insertAfter(MovieNode* last, MovieNode* current, const string& method);
 	void replaceHead(MovieNode* head, MovieNode* movie, const string& method);
+	bool isBiggerThan(int value);
+	bool isEqualTo(int value);
+	bool isSmallerThan(int value);
+	bool isFirstElement(int size);
+
 public:
 	InterlacedMovieList();
 	virtual ~InterlacedMovieList();

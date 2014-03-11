@@ -164,6 +164,6 @@ void controller::ApplicationController::run() {
 	added = addMovie("Batman", "20th Century Fox", 120, "R");
 	added = addMovie("Aladdin", "Doesn't Matter", 110, "G");
 	added = addMovie("Zelda", "Paramount", 130, "PG");
-	added = addMovie("Mama Mia", "20th Century Fox", 99, "PG-13");
+//	added = addMovie("Mama Mia", "20th Century Fox", 99, "PG-13");
 
 }
